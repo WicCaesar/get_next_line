@@ -6,7 +6,7 @@
 /*   By: cnascime <cnascime@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:24:53 by cnascime          #+#    #+#             */
-/*   Updated: 2022/09/11 03:05:29 by cnascime         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:34:57 by cnascime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memmove(superbonder, s1, s1length);
 	ft_memmove((superbonder + s1length), s2, s2length);
 	superbonder[totallength - 1] = '\0';
+	free ((char *)s1);
 	return (superbonder);
 }
 
 char	*ft_strchr(const char *lookingfor, int character)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (lookingfor[i] != '\0')

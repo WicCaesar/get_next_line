@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cnascime <cnascime@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 19:37:05 by cnascime          #+#    #+#             */
-/*   Updated: 2022/09/16 17:34:56 by cnascime         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:34:58 by cnascime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ is closed. It is by default initialised at 0, if not declared otherwise. */
 char	*get_next_line(int fd)
 {	
 	char		*line;
-	static char	*temp;
+	static char	*temp[1024];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	temp = reader(fd, temp);
-	if (!temp)
+	temp[fd] = reader(fd, temp[fd]);
+	if (!temp[fd])
 		return (NULL);
-	line = reaper(temp);
-	temp = rescuer(temp);
+	line = reaper(temp[fd]);
+	temp[fd] = rescuer(temp[fd]);
 	return (line);
 }
 
