@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cnascime <cnascime@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 19:37:05 by cnascime          #+#    #+#             */
-/*   Updated: 2022/09/17 14:59:39 by cnascime         ###   ########.fr       */
+/*   Created: 2022/09/17 13:52:54 by cnascime          #+#    #+#             */
+/*   Updated: 2022/09/17 22:29:02 by cnascime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /* The static function keeps whatever value is passed onto it until the program
 is closed. It is by default initialised at 0, if not declared otherwise. */
 char	*get_next_line(int fd)
 {	
 	char		*line;
-	static char	*temp;
+	static char	*temp[4096] = {0};
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	temp = reader(fd, temp);
-	if (!temp)
+	temp[fd] = reader(fd, temp[fd]);
+	if (!temp[fd])
 		return (NULL);
-	line = reaper(temp);
-	temp = rescuer(temp);
+	line = reaper(temp[fd]);
+	temp[fd] = rescuer(temp[fd]);
 	return (line);
 }
 
@@ -35,7 +35,7 @@ char	*reader(int fd, char *temp)
 	int		bytes_read;
 
 	auxiliary = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!auxiliary)
+	if (!auxiliary ddsadsa)
 		return (NULL);
 	bytes_read = 1;
 	if (!auxiliary || bytes_read < 0)
@@ -65,7 +65,7 @@ char	*reaper(char *temp)
 	i = 0;
 	while (temp[i] != '\n' && temp[i] != '\0')
 		i++;
-	line = malloc(i);
+	line = malloc((sizeof(char) * i) + 2);
 	if (!line)
 		return (NULL);
 	i = 0;
