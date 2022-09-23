@@ -6,7 +6,7 @@
 /*   By: cnascime <cnascime@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 19:37:05 by cnascime          #+#    #+#             */
-/*   Updated: 2022/09/17 14:59:39 by cnascime         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:22:46 by cnascime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*reaper(char *temp)
 	i = 0;
 	while (temp[i] != '\n' && temp[i] != '\0')
 		i++;
-	line = malloc(i);
+	line = malloc(sizeof(char) * (i + 2));
 	if (!line)
 		return (NULL);
 	i = 0;

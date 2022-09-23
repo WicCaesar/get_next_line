@@ -6,7 +6,7 @@
 /*   By: cnascime <cnascime@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 13:52:54 by cnascime          #+#    #+#             */
-/*   Updated: 2022/09/17 22:29:02 by cnascime         ###   ########.fr       */
+/*   Updated: 2022/09/23 18:22:44 by cnascime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*reader(int fd, char *temp)
 	int		bytes_read;
 
 	auxiliary = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!auxiliary ddsadsa)
+	if (!auxiliary)
 		return (NULL);
 	bytes_read = 1;
 	if (!auxiliary || bytes_read < 0)
@@ -65,7 +65,7 @@ char	*reaper(char *temp)
 	i = 0;
 	while (temp[i] != '\n' && temp[i] != '\0')
 		i++;
-	line = malloc((sizeof(char) * i) + 2);
+	line = malloc(sizeof(char) * (i + 2));
 	if (!line)
 		return (NULL);
 	i = 0;
